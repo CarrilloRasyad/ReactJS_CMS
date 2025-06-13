@@ -38,38 +38,16 @@ export default function ContactCreate() {
         <i className="fas fa-address-book text-white text-2xl mr-3" />
         <div className="text-white font-bold text-xl">Contact Management</div>
       </Link>
-      <nav>
-        <ul className="flex space-x-6">
-          <li>
-            <a
-              href="profile.html"
-              className="text-gray-100 hover:text-white flex items-center transition-colors duration-200"
-            >
-              <i className="fas fa-user-circle mr-2" />
-              <span>Profile</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="index.html"
-              className="text-gray-100 hover:text-white flex items-center transition-colors duration-200"
-            >
-              <i className="fas fa-sign-out-alt mr-2" />
-              <span>Logout</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </div>
   </header>
   <main className="container mx-auto px-4 py-8 flex-grow">
     <div className="flex items-center mb-6">
-      <a
-        href="dashboard.html"
+      <Link
+        href="/dashboard/contacts"
         className="text-blue-400 hover:text-blue-300 mr-4 flex items-center transition-colors duration-200"
       >
         <i className="fas fa-arrow-left mr-2" /> Back to Contacts
-      </a>
+      </Link>
       <h1 className="text-2xl font-bold text-white flex items-center">
         <i className="fas fa-user-plus text-blue-400 mr-3" /> Create New Contact
       </h1>
@@ -81,7 +59,7 @@ export default function ContactCreate() {
             <div>
               <label
                 htmlFor="first_name"
-                className="block text-gray-300 text-sm font-medium mb-2">First Name
+                className="block text-gray-300 text-sm font-medium mb-2">Nama Depan
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -101,9 +79,7 @@ export default function ContactCreate() {
             <div>
               <label
                 htmlFor="last_name"
-                className="block text-gray-300 text-sm font-medium mb-2"
-              >
-                Last Name
+                className="block text-gray-300 text-sm font-medium mb-2">Nama Belakang
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -124,9 +100,7 @@ export default function ContactCreate() {
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block text-gray-300 text-sm font-medium mb-2"
-            >
-              Email
+              className="block text-gray-300 text-sm font-medium mb-2">Email
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -139,15 +113,14 @@ export default function ContactCreate() {
                 className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                 placeholder="Enter email address"
                 required=""
+                value={email} onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
           <div className="mb-6">
             <label
               htmlFor="phone"
-              className="block text-gray-300 text-sm font-medium mb-2"
-            >
-              Phone
+              className="block text-gray-300 text-sm font-medium mb-2">Phone
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -160,16 +133,17 @@ export default function ContactCreate() {
                 className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                 placeholder="Enter phone number"
                 required=""
+                value={phone} onChange={(e) => setPhone(e.target.value)}
               />
             </div>
           </div>
           <div className="flex justify-end space-x-4">
-            <a
-              href="dashboard.html"
+            <Link
+              to="/dashboard/contacts"
               className="px-5 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-200 flex items-center shadow-md"
             >
               <i className="fas fa-times mr-2" /> Cancel
-            </a>
+            </Link>
             <button
               type="submit"
               className="px-5 py-3 bg-gradient text-white rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-lg transform hover:-translate-y-0.5 flex items-center"

@@ -7,6 +7,8 @@ import UserProfile from './components/User/UserProfile.jsx';
 import UserLogout  from './components/User/UserLogout.jsx';
 import Layout from './components/Layout.jsx';
 import DashboardLayout from './components/DashboardLayout.jsx';
+import ContactList from './components/Contact/ContactList.jsx';
+import ContactCreate from './components/Contact/ContactCreate.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -22,7 +24,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="profile" element={<UserProfile/>}/>
             <Route path="logout" element={<UserLogout/>}></Route>
           </Route>
-          <Route path="contacts" element={<div>Contacts</div>}></Route>
+          <Route path="contacts">
+            <Route index element={<ContactList/>}></Route>
+            <Route path="create" element={<ContactCreate/>}></Route>
+            <Route path=":id"></Route>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

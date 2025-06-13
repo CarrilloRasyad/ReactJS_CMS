@@ -31,3 +31,12 @@ export const contactList = async(token, {name, phone, email, page}) => {
         }
     })
 }
+
+export const contactDelete = async(token, id) => {
+    return await fetch(`${import.meta.env.VITE_PATH_API}/contacts/${id}`, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': token
+        }
+    });
+}

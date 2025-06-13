@@ -15,3 +15,16 @@ export const alertError = async(message) => {
         text: message
     })
 }
+
+export const alertConfirm = async(message) => {
+    const result = await Swal.fire({
+        icon: 'question',
+        title: 'Apakah anda yakin?',
+        text: message,
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes'
+    })
+    return result.isConfirmed;
+}
