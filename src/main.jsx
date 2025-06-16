@@ -9,6 +9,10 @@ import Layout from './components/Layout.jsx';
 import DashboardLayout from './components/DashboardLayout.jsx';
 import ContactList from './components/Contact/ContactList.jsx';
 import ContactCreate from './components/Contact/ContactCreate.jsx';
+import ContactDetail from './components/Contact/ContactDetail.jsx';
+import ContactEdit from './components/Contact/ContactEdit.jsx';
+import AddressCreate from './components/Address/AddressCreate.jsx';
+import AddressEdit from './components/Address/AddressEdit.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -22,12 +26,19 @@ createRoot(document.getElementById('root')).render(
         <Route path="/dashboard" element={<DashboardLayout/>}>
           <Route path="users">
             <Route path="profile" element={<UserProfile/>}/>
-            <Route path="logout" element={<UserLogout/>}></Route>
+            <Route path="logout" element={<UserLogout/>}/>
           </Route>
           <Route path="contacts">
-            <Route index element={<ContactList/>}></Route>
-            <Route path="create" element={<ContactCreate/>}></Route>
-            <Route path=":id"></Route>
+            <Route index element={<ContactList/>}/>
+            <Route path="create" element={<ContactCreate/>}/>
+            <Route path=":id">
+              <Route index element={<ContactDetail/>}/>
+              <Route path="edit" element={<ContactEdit/>}/>
+              <Route path="addresses">
+                <Route path="create" element={<AddressCreate/>}/>
+                <Route path=":addressId/edit" element={<AddressEdit/>}/>
+              </Route>
+            </Route>
           </Route>
         </Route>
       </Routes>
