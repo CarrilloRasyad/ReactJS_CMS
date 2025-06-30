@@ -13,12 +13,14 @@ import ContactDetail from './components/Contact/ContactDetail.jsx';
 import ContactEdit from './components/Contact/ContactEdit.jsx';
 import AddressCreate from './components/Address/AddressCreate.jsx';
 import AddressEdit from './components/Address/AddressEdit.jsx';
+import AuthRedirect from './components/AuthRedirect.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route index element={<AuthRedirect/>}/>
         <Route element={<Layout/>}>
           <Route path="/register" element={<UserRegister/>}/>
           <Route path="/login" element={<UserLogin/>}/>

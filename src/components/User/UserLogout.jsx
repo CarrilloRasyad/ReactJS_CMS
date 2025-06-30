@@ -11,6 +11,7 @@ export default function UserLogout() {
         const response = await userLogout(token);
         const responseBody = await response.json();
         console.log(responseBody);
+        console.log(response);
 
         if (response.status === 200) {
             setToken("");

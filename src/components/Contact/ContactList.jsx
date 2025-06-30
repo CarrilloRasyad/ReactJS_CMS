@@ -1,110 +1,113 @@
-import { useEffect, useState } from "react";
-import { useEffectOnce, useLocalStorage } from "react-use";
-import { contactDelete, contactList } from "../../lib/api/ContactApi";
-import { alertConfirm, alertError, alertSuccess } from "../../lib/alert";
-import { Link } from "react-router";
+import {useEffectOnce, useLocalStorage} from "react-use";
+import {useEffect, useState} from "react";
+import {contactDelete, contactList} from "../../lib/api/ContactApi.js";
+import {alertConfirm, alertError, alertSuccess} from "../../lib/alert.js";
+import {Link} from "react-router";
 
 export default function ContactList() {
 
-    const [token, _] = useLocalStorage("token", "");
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [page, setPage] = useState(1);
-    const [totalPage, setTotalPage] = useState(1);
-    const [contacts, setContacts] = useState([]);
-    const [reload, setReload] = useState(false);
+  const [token, _] = useLocalStorage("token", "");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+  const [contacts, setContacts] = useState([]);
+  const [reload, setReload] = useState(false);
 
-    function getPages() {
-        const pages = [];
-        for(let i = 1; i<=pages; i++ ) {
-            pages.push(i);
-        }
-        return pages;
+  function getPages() {
+    const pages = [];
+    for (let i = 1; i <= totalPage; i++) {
+      pages.push(i);
+    }
+    return pages;
+  }
+
+  async function handleSearchContacts(e) {
+    e.preventDefault();
+    setPage(1);
+    setReload(!reload);
+  }
+
+  async function handlePageChange(page) {
+    setPage(page);
+    setReload(!reload);
+  }
+
+  async function fetchContacts() {
+    const response = await contactList(token, {name, phone, email, page});
+    const responseBody = await response.json();
+    console.log(responseBody);
+
+    if (response.status === 200) {
+      setContacts(responseBody.data);
+      setTotalPage(responseBody.paging.total_page);
+    } else {
+      await alertError(responseBody.errors);
+    }
+  }
+
+  async function handleContactDelete(id) {
+    if (!await alertConfirm("Are you sure you want to delete this contact?")) {
+      return;
     }
 
-    async function handleSearchContacts(e) {
-        e.preventDefault();
-        setPage(1);
-        setReload(!reload);
+    const response = await contactDelete(token, id);
+    const responseBody = await response.json();
+    console.log(responseBody);
+
+    if (response.status === 200) {
+      await alertSuccess("Contact deleted successfully");
+      setReload(!reload);
+    } else {
+      await alertError(responseBody.errors);
     }
+  }
 
-    async function handlePageChange(page) {
-        setPage(page);
-        setReload(!reload);
-    }
+  useEffect(() => {
+    fetchContacts()
+      .then(() => console.log("Contacts fetched"));
+  }, [reload])
 
-    async function fetchContacts() {
-        const response = await contactList(token, {name, phone, email, page});
-        const responseBody = await response.json();
-        console.log(responseBody);
+  useEffectOnce(() => {
+    const toggleButton = document.getElementById('toggleSearchForm');
+    const searchFormContent = document.getElementById('searchFormContent');
+    const toggleIcon = document.getElementById('toggleSearchIcon');
 
-        if(response.status === 200) {
-            setContacts(responseBody.data);
-            setTotalPage(responseBody.paging.total_page);
-        } else {
-            await alertError(responseBody.errors);
-        }
-    }
+    // Add transition for smooth animation
+    searchFormContent.style.transition = 'max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin 0.3s ease-in-out';
+    searchFormContent.style.overflow = 'hidden';
+    searchFormContent.style.maxHeight = '0px';
+    searchFormContent.style.opacity = '0';
+    searchFormContent.style.marginTop = '0';
 
-    async function handleContactDelete(id) {
-        if (!await alertConfirm("Apakah anda yakin ingin menghapus kontak ini?")) {
-            return;
-        }
-
-        const response = await contactDelete(token, id);
-        const responseBody = await response.json();
-        console.log(responseBody);
-
-        if(response.status === 200) {
-            await alertSuccess("Berhasil menghapus data kontak");
-            setReload(!reload);
-        } else {
-            await alertError(responseBody.errors);
-        }
-    }
-
-    useEffect(() => {
-        fetchContacts()
-        .then(() => console.log("Data kontak berhasil di ambil"));
-    }, [reload])
-
-    useEffectOnce(() => {
-        const toggleButton = document.getElementById('toggleSearchForm');
-        const searchFormContent = document.getElementById('searchFormContent');
-        const toggleIcon = document.getElementById('toggleSearchIcon');
-
-        searchFormContent.style.transition = 'max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin 0.3s ease-in-out';
-        searchFormContent.style.overflow = 'hidden';
+    function toggleSearchForm() {
+      if (searchFormContent.style.maxHeight !== '0px') {
+        // Hide the form
         searchFormContent.style.maxHeight = '0px';
         searchFormContent.style.opacity = '0';
         searchFormContent.style.marginTop = '0';
+        toggleIcon.classList.remove('fa-chevron-up');
+        toggleIcon.classList.add('fa-chevron-down');
+      } else {
+        // Show the form
+        searchFormContent.style.maxHeight = searchFormContent.scrollHeight + 'px';
+        searchFormContent.style.opacity = '1';
+        searchFormContent.style.marginTop = '1rem';
+        toggleIcon.classList.remove('fa-chevron-down');
+        toggleIcon.classList.add('fa-chevron-up');
+      }
+    }
 
-        function toggleSearchForm() {
-        if (searchFormContent.style.maxHeight !== '0px') {
-            searchFormContent.style.maxHeight = '0px';
-            searchFormContent.style.opacity = '0';
-            searchFormContent.style.marginTop = '0';
-            toggleIcon.classList.remove('fa-chevron-up');
-            toggleIcon.classList.add('fa-chevron-down');
-        } else {
-            searchFormContent.style.maxHeight = searchFormContent.scrollHeight + 'px';
-            searchFormContent.style.opacity = '1';
-            searchFormContent.style.marginTop = '1rem';
-            toggleIcon.classList.remove('fa-chevron-down');
-            toggleIcon.classList.add('fa-chevron-up');
-        }
-        }
+    toggleButton.addEventListener('click', toggleSearchForm);
 
-        toggleButton.addEventListener('click', toggleSearchForm);
+    return () => {
+      toggleButton.removeEventListener('click', toggleSearchForm);
+    }
+  })
 
-        return () => {
-        toggleButton.removeEventListener('click', toggleSearchForm);
-        }
-    })
-
-    return <>
-     <div className="flex items-center mb-6">
+  return <>
+    <div className="flex items-center mb-6">
       <i className="fas fa-users text-blue-400 text-2xl mr-3"></i>
       <h1 className="text-2xl font-bold text-white">My Contacts</h1>
     </div>
@@ -268,5 +271,5 @@ export default function ContactList() {
         }
       </nav>
     </div>
-    </>
+  </>
 }

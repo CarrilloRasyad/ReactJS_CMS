@@ -15,7 +15,7 @@ export const contactCreate = async(token,{first_name, last_name, email, phone}) 
     });
 }
 
-export const contactList = async(token, {name, phone, email, page}) => {
+export const contactList = async (token, {name, phone, email, page}) => {
   const url = new URL(`${import.meta.env.VITE_API_PATH}/contacts`);
 
   if (name) url.searchParams.append('name', name);

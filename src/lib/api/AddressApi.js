@@ -38,7 +38,7 @@ export const addressDetail = async(token,id, addressId) => {
 
 export const addressUpdate = async(token, id, {addressId, street, city, province, country, postal_code}) => {
     return await fetch(`${import.meta.env.VITE_API_PATH}/contacts/${id}/addresses/${addressId}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
