@@ -30,7 +30,7 @@ export default function DashboardLayout() {
         <main className="container mx-auto px-4 py-8 flex-grow">
                 <Outlet/>
             <div className="mt-10 mb-6 text-center text-gray-400 text-sm animate-fade-in">
-            <p>© 2025 Contact Management. All rights reserved.</p>
+            <p>© 2025 Carrillo Dev. All Rights Reserved.</p>
             </div>
         </main>
     </div>
