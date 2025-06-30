@@ -36,8 +36,8 @@ export default function UserLogin () {
                 <div className="inline-block p-3 bg-gradient rounded-full mb-4">
                     <i className="fas fa-address-book text-3xl text-white" />
                 </div>
-                <h1 className="text-3xl font-bold text-white">Contact Management</h1>
-                <p className="text-gray-300 mt-2">Sign in to your account</p>
+                <h1 className="text-3xl font-bold text-white">Manajemen Kontak</h1>
+                <p className="text-gray-300 mt-2">Masuk ke akun anda</p>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-5">

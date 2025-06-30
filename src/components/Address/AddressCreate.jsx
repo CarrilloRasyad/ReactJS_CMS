@@ -51,10 +51,10 @@ export default function AddressCreate() {
     <div className="flex items-center mb-6">
       <Link to={`/dashboard/contacts/${id}`}
             className="text-blue-400 hover:text-blue-300 mr-4 flex items-center transition-colors duration-200">
-        <i className="fas fa-arrow-left mr-2"></i> Back to Contact Details
+        <i className="fas fa-arrow-left mr-2"></i> Kembali ke detail kontak
       </Link>
       <h1 className="text-2xl font-bold text-white flex items-center">
-        <i className="fas fa-plus-circle text-blue-400 mr-3"></i> Add New Address
+        <i className="fas fa-plus-circle text-blue-400 mr-3"></i> Buat alamat baru
       </h1>
     </div>
 
@@ -75,40 +75,40 @@ export default function AddressCreate() {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-5">
-            <label htmlFor="street" className="block text-gray-300 text-sm font-medium mb-2">Street</label>
+            <label htmlFor="street" className="block text-gray-300 text-sm font-medium mb-2">Jalan</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i className="fas fa-road text-gray-500"></i>
               </div>
               <input type="text" id="street" name="street"
                      className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-                     placeholder="Enter street address" required
+                     placeholder="Masukkan nama jalan" required
                      value={street} onChange={(e) => setStreet(e.target.value)}/>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
             <div>
-              <label htmlFor="city" className="block text-gray-300 text-sm font-medium mb-2">City</label>
+              <label htmlFor="city" className="block text-gray-300 text-sm font-medium mb-2">Kota</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i className="fas fa-city text-gray-500"></i>
                 </div>
                 <input type="text" id="city" name="city"
                        className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-                       placeholder="Enter city" required
+                       placeholder="Masukkan kota" required
                        value={city} onChange={(e) => setCity(e.target.value)}/>
               </div>
             </div>
             <div>
-              <label htmlFor="province" className="block text-gray-300 text-sm font-medium mb-2">Province/State</label>
+              <label htmlFor="province" className="block text-gray-300 text-sm font-medium mb-2">Provinsi</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i className="fas fa-map text-gray-500"></i>
                 </div>
                 <input type="text" id="province" name="province"
                        className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-                       placeholder="Enter province or state" required
+                       placeholder="Masukkan provinsi" required
                        value={province} onChange={(e) => setProvince(e.target.value)}/>
               </div>
             </div>
@@ -116,26 +116,26 @@ export default function AddressCreate() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
             <div>
-              <label htmlFor="country" className="block text-gray-300 text-sm font-medium mb-2">Country</label>
+              <label htmlFor="country" className="block text-gray-300 text-sm font-medium mb-2">Negara</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i className="fas fa-flag text-gray-500"></i>
                 </div>
                 <input type="text" id="country" name="country"
                        className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-                       placeholder="Enter country" required
+                       placeholder="Masukkan Negara" required
                        value={country} onChange={(e) => setCountry(e.target.value)}/>
               </div>
             </div>
             <div>
-              <label htmlFor="postal_code" className="block text-gray-300 text-sm font-medium mb-2">Postal Code</label>
+              <label htmlFor="postal_code" className="block text-gray-300 text-sm font-medium mb-2">Kode Pos</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i className="fas fa-mail-bulk text-gray-500"></i>
                 </div>
                 <input type="text" id="postal_code" name="postal_code"
                        className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-                       placeholder="Enter postal code" required
+                       placeholder="Masukkan kode pos" required
                        value={postal_code} onChange={(e) => setPostalCode(e.target.value)}/>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function AddressCreate() {
             </Link>
             <button type="submit"
                     className="px-5 py-3 bg-gradient text-white rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-lg transform hover:-translate-y-0.5 flex items-center">
-              <i className="fas fa-plus-circle mr-2"></i> Add Address
+              <i className="fas fa-plus-circle mr-2"></i> Buat Alamat
             </button>
           </div>
         </form>

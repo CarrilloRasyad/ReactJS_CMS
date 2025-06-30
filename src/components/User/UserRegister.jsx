@@ -47,8 +47,8 @@ export default function UserRegister () {
                 <div className="inline-block p-3 bg-gradient rounded-full mb-4">
                     <i className="fas fa-user-plus text-3xl text-white" />
                 </div>
-                <h1 className="text-3xl font-bold text-white">Contact Management</h1>
-                <p className="text-gray-300 mt-2">Create a new account</p>
+                <h1 className="text-3xl font-bold text-white">Manajemen Kontak</h1>
+                <p className="text-gray-300 mt-2">Buat akun baru</p>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -59,20 +59,20 @@ export default function UserRegister () {
                         </div>
                         <input type="text" id="username" name="username" 
                         className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" 
-                        placeholder="Choose a username" 
+                        placeholder="Masukkan Username anda" 
                         required
                         value={username} onChange={(e) => setUsername(e.target.value)} />
                     </div>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-300 text-sm font-medium mb-2">Full Name</label>
+                    <label htmlFor="name" className="block text-gray-300 text-sm font-medium mb-2">Nama Lengkap</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <i className="fas fa-id-card text-gray-500" />
                         </div>
                         <input type="text" id="name" name="name" 
                         className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" 
-                        placeholder="Enter your full name" 
+                        placeholder="Masukkan nama lengkap anda" 
                         required
                         value={name} onChange={(e) => setName(e.target.value)} />
                     </div>
@@ -85,32 +85,32 @@ export default function UserRegister () {
                         </div>
                         <input type="password" id="password" name="password" 
                         className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" 
-                        placeholder="Create a password" 
+                        placeholder="Masukkan password anda" 
                         required
                         value={password}onChange={(e) => setPassword(e.target.value)} />
                     </div>
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="confirm_password" className="block text-gray-300 text-sm font-medium mb-2">Confirm Password</label>
+                    <label htmlFor="confirm_password" className="block text-gray-300 text-sm font-medium mb-2">Konfirmasi Password</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <i className="fas fa-check-double text-gray-500" />
                         </div>
                         <input type="password" id="confirm_password" name="confirm_password" 
                         className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" 
-                        placeholder="Confirm your password" 
+                        placeholder="Masukkan Konfirmasi Password anda" 
                         required
                         value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                     </div>
                 </div>
                 <div className="mb-6">
                     <button type="submit" className="w-full bg-gradient text-white py-3 px-4 rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-lg transform hover:-translate-y-0.5">
-                        <i className="fas fa-user-plus mr-2" /> Register
+                        <i className="fas fa-user-plus mr-2" /> Daftar
                     </button>
                 </div>
                 <div className="text-center text-sm text-gray-400">
-                    Already have an account? 
-                    <Link to="/login" className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200">Sign in
+                    Sudah memiliki akun? 
+                    <Link to="/login" className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200">Masuk
                     </Link>
                 </div>
             </form>
