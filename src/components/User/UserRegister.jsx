@@ -17,7 +17,12 @@ export default function UserRegister () {
         if(password !== confirmPassword) {
             await alertError("Password tidak sesuai");
             return;
-        } 
+        }
+
+        if(password.length < 6) {
+            await alertError("Panjang password tidak boleh kurang dari 6 karakter");
+            return;
+        }
 
         const response = await userRegister({
             username: username,
